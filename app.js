@@ -6,6 +6,7 @@ const app = express();
 
 const index = require('./routes/index');
 const noch_was = require('./routes/noch-was')
+const calculation = require('./routes/calc')
 
 // Generic application setup
 app.use(logger('dev'));
@@ -16,6 +17,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Routes
 app.use('/', index);
 app.use('/noch/', noch_was);
+app.use('/calc/', calculation)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

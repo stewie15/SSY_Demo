@@ -5,22 +5,29 @@ router.get('/', function(req, res) {
     res.send('welcome to calc')
 })
 
-router.get('/plus', plus)
+router.post('/plus', plus)
 
 function plus(req, res) {
-    const a = req.query.a
-    const b = req.query.b
 
-    res.send( a + " + " + b + " = " + (parseFloat(a)+parseFloat(b) ) ) 
+    /*
+    res.write('plus \r')
+    res.write( req.body.a + " + " + req.body.b + " = " + (req.body.a + req.body.b) ) 
+    res.end()
+    */
+    res.json( { "Ergebnis": req.body.a + " + " + req.body.b + " = " + (req.body.a + req.body.b) } )
+    
 }
 
-router.get('/minus', minus)
+router.post('/minus', minus)
 
 function minus(req, res) {
-    const a = req.query.a
-    const b = req.query.b
+    /*
+    res.write('minus \r')
+    res.write( req.body.a + " - " + req.body.b + " = " + (req.body.a - req.body.b) ) 
+    res.end()
+    */
 
-    res.send(a + " - " + b + " = " + (parseInt(a)-parseInt(b)))
+    res.json( { "Ergebnis": req.body.a + " - " + req.body.b + " = " + (req.body.a - req.body.b)} )
 }
 
 module.exports = router
